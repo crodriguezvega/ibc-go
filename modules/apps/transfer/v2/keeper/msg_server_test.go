@@ -64,7 +64,8 @@ func (suite *KeeperTestSuite) TestMsgSendPacketTransfer() {
 			},
 			nil,
 		},
-		// TODO: Update
+		// TODO: Migrate vesting account test cases to use x/accounts lockup accounts as mentioned in v0.52 upgrading doc.
+		// https://github.com/cosmos/ibc-go/issues/7681
 		// {
 		// 	"successful transfer of entire spendable balance with vesting account",
 		// 	func() {
@@ -292,7 +293,7 @@ func (suite *KeeperTestSuite) TestMsgRecvPacketTransfer() {
 			},
 			nil,
 		},
-		// TODO: async tests
+		// TODO: async tests, should be done with forwarding #7593
 	}
 
 	for _, tc := range testCases {

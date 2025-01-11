@@ -77,7 +77,7 @@ func (k *Keeper) OnSendPacket(ctx context.Context, sourceChannel string, payload
 	// TODO: events
 	// events.EmitTransferEvent(ctx, sender.String(), receiver, tokens, memo, hops)
 
-	// TODO: telemetry
+	// TODO: telemetry #7707
 	// telemetry.ReportTransfer(sourcePort, sourceChannel, destinationPort, destinationChannel, tokens)
 
 	return nil
@@ -174,7 +174,7 @@ func (k *Keeper) OnRecvPacket(ctx context.Context, sourceChannel, destChannel st
 	}
 
 	_ = receivedCoins // TODO: remove this line when forwarding is implemented
-	// TODO: forwarding
+	// TODO: forwarding #7593
 	// if data.HasForwarding() {
 	//	// we are now sending from the forward escrow address to the final receiver address.
 	// TODO: inside this version of the function, we should fetch the packet that was stored in IBC core in order to set it for forwarding.
@@ -183,7 +183,7 @@ func (k *Keeper) OnRecvPacket(ctx context.Context, sourceChannel, destChannel st
 	//	}
 	// }
 
-	// TODO: telemetry
+	// TODO: telemetry #7707
 	// telemetry.ReportOnRecvPacket(packet, data.Tokens)
 
 	// The ibc_module.go module will return the proper ack.

@@ -153,7 +153,7 @@ func (k *Keeper) RecvPacket(ctx context.Context, msg *types.MsgRecvPacket) (*typ
 			// Set packet acknowledgement to async if any of the acknowledgements are async.
 			isAsync = true
 			// Return error if there is more than 1 payload
-			// TODO: Handle case where there are multiple payloads
+			// TODO: Handle case where there are multiple payloads #7008
 			if len(msg.Packet.Payloads) > 1 {
 				return nil, errorsmod.Wrapf(types.ErrInvalidPacket, "packet with multiple payloads cannot have async acknowledgement")
 			}
@@ -186,7 +186,7 @@ func (k *Keeper) RecvPacket(ctx context.Context, msg *types.MsgRecvPacket) (*typ
 		}
 	}
 
-	// TODO: store the packet for async applications to access if required.
+	// TODO: store the packet for async applications to access if required. #7593
 	defer telemetry.ReportRecvPacket(msg.Packet)
 
 	sdkCtx.Logger().Info("receive packet callback succeeded", "source-channel", msg.Packet.SourceChannel, "dest-channel", msg.Packet.DestinationChannel, "result", types.SUCCESS.String())

@@ -26,7 +26,7 @@ func (k *Keeper) sendPacket(
 	// Lookup channel associated with our source channel to retrieve the destination channel
 	channel, ok := k.GetChannel(ctx, sourceChannel)
 	if !ok {
-		// TODO: figure out how aliasing will work when more than one payload is sent.
+		// TODO: figure out how aliasing will work when more than one payload is sent. #7008
 		channel, ok = k.convertV1Channel(ctx, payloads[0].SourcePort, sourceChannel)
 		if !ok {
 			return 0, "", errorsmod.Wrap(types.ErrChannelNotFound, sourceChannel)
@@ -102,7 +102,7 @@ func (k *Keeper) recvPacket(
 ) error {
 	channel, ok := k.GetChannel(ctx, packet.DestinationChannel)
 	if !ok {
-		// TODO: figure out how aliasing will work when more than one payload is sent.
+		// TODO: figure out how aliasing will work when more than one payload is sent. #7008
 		channel, ok = k.convertV1Channel(ctx, packet.Payloads[0].DestinationPort, packet.DestinationChannel)
 		if !ok {
 			return errorsmod.Wrap(types.ErrChannelNotFound, packet.DestinationChannel)
